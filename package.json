@@ -1,0 +1,29 @@
+{
+  "name": "quantum-qna",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kolinzo1/quantum-qna.git"
+  },
+  "author": "Kola Oyedele",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kolinzo1/quantum-qna/issues"
+  },
+  "homepage": "https://github.com/kolinzo1/quantum-qna#readme",
+  "description": "",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.12.0",
+    "node": "^18.20.6",
+    "nodemon": "^3.1.9"
+  }
+}
