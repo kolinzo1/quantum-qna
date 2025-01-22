@@ -9,8 +9,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "build": "react-scripts build",
-    "heroku-postbuild": "cd quantum-qna && npm run build"
+    "build": "cd quantum-qna && npm run build",
+    "heroku-postbuild": "npm rebuild bcrypt --build-from-source"
   },
   "repository": {
     "type": "git",
@@ -32,7 +32,6 @@
     "node": "^18.20.6",
     "nodemon": "^3.1.9",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-script": "^5.0.1"
+    "react-dom": "^19.0.0"
   }
 }
