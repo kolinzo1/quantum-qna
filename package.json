@@ -1,5 +1,9 @@
 {
   "name": "quantum-qna",
+  "engines": {
+    "node": "20.17.0",
+    "npm": "10.9.2"
+  },
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
