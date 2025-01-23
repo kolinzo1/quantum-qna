@@ -1,5 +1,5 @@
 {
-  "name": "quantum-qna",
+  "name": "quantum-qna-server",
   "engines": {
     "node": "20.17.0",
     "npm": "10.9.2"
