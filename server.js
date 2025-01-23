@@ -1,5 +1,5 @@
 const express = require("express");
-const mysql = require("mysql2");
+const mysql = require("mysql2/promise");
 const bcrypt = require("bcrypt");
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
@@ -9,12 +9,27 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-const db = mysql.createPool({
-  host: "zj2x67aktl2o6q2n.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-  user: "ghoiuvef0rmw4sn7",
-  password: "glzmnljlotak80x8",
-  database: "yr63hdytf6cspl5o",
-});
+async function connectToDatabase() {
+  try {
+    const dbConfig = new URL(process.env.JAWSDB_URL);
+    const connection = await mysql.createConnection({
+      host: dbConfig.hostname,
+      user: dbConfig.username,
+      password: dbConfig.password,
+      database: dbConfig.pathname.substr(1),
+      ssl: {
+        rejectUnauthorized: false, // This is often needed for Heroku's self-signed certificates
+      },
+    });
+    console.log("Connected to the database");
+    return connection;
+  } catch (err) {
+    console.error("Error connecting to the database:", err);
+    throw err;
+  }
+}
+
+const db = connectToDatabase();
 
 // User Registration
 app.post("/api/register", async (req, res) => {
