@@ -3,6 +3,8 @@ function QuestionDetail({ questionId }) {
   const [answers, setAnswers] = useState([]);
   const [newAnswer, setNewAnswer] = useState("");
 
+  const backendUrl =
+    process.env.REACT_APP_BACKEND_URL || "http://localhost:3001";
   useEffect(() => {
     fetchQuestionAndAnswers();
   }, [questionId]);
@@ -10,8 +12,8 @@ function QuestionDetail({ questionId }) {
   const fetchQuestionAndAnswers = async () => {
     try {
       const [questionRes, answersRes] = await Promise.all([
-        axios.get(`http://localhost:3001/api/questions/${questionId}`),
-        axios.get(`http://localhost:3001/api/questions/${questionId}/answers`),
+        axios.get(`${backendUrl}/api/questions/${questionId}`),
+        axios.get(`${backendUrl}/api/questions/${questionId}/answers`),
       ]);
       setQuestion(questionRes.data);
       setAnswers(answersRes.data);
@@ -23,13 +25,10 @@ function QuestionDetail({ questionId }) {
   const handleSubmitAnswer = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(
-        `http://localhost:3001/api/questions/${questionId}/answers`,
-        {
-          content: newAnswer,
-          userId: localStorage.getItem("userId"),
-        }
-      );
+      await axios.post(`${backendUrl}/api/questions/${questionId}/answers`, {
+        content: newAnswer,
+        userId: localStorage.getItem("userId"),
+      });
       setNewAnswer("");
       fetchQuestionAndAnswers();
     } catch (error) {

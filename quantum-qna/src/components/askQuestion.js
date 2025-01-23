@@ -1,3 +1,5 @@
+const backendUrl = process.env.REACT_APP_BACKEND_URL || "http://localhost:3001";
+
 function AskQuestion({ categoryId, onQuestionSubmitted }) {
   const [formData, setFormData] = useState({
     title: "",
@@ -7,7 +9,7 @@ function AskQuestion({ categoryId, onQuestionSubmitted }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`http://localhost:3001/api/questions`, {
+      await axios.post(`${backendUrl}/api/questions`, {
         categoryId,
         ...formData,
         userId: localStorage.getItem("userId"),

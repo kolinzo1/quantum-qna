@@ -3,6 +3,8 @@ import axios from "axios";
 import QuestionList from "./questionList.js";
 import AskQuestion from "./askQuestion.js";
 
+const backendUrl = process.env.REACT_APP_BACKEND_URL || "http://localhost:3001";
+
 function CategoryView({ categoryId }) {
   const [questions, setQuestions] = useState([]);
   const [showAskForm, setShowAskForm] = useState(false);
@@ -14,7 +16,7 @@ function CategoryView({ categoryId }) {
   const fetchQuestions = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3001/api/categories/${categoryId}/questions`
+        `${backendUrl}/api/categories/${categoryId}/questions`
       );
       setQuestions(response.data);
     } catch (error) {

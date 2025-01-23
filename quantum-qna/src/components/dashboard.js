@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
+const backendUrl = process.env.REACT_APP_BACKEND_URL || "http://localhost:3001";
 function Dashboard() {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -18,7 +19,7 @@ function Dashboard() {
 
   const fetchCategories = async () => {
     try {
-      const response = await axios.get("http://localhost:3001/api/categories");
+      const response = await axios.get(`${backendUrl}/api/categories`);
       setCategories(response.data);
     } catch (error) {
       console.error("Failed to fetch categories:", error);
@@ -31,7 +32,7 @@ function Dashboard() {
     setShowAskForm(false);
     try {
       const response = await axios.get(
-        `http://localhost:3001/api/categories/${category.category_id}/questions`
+        `${backendUrl}/api/categories/${category.category_id}/questions`
       );
       setQuestions(response.data);
     } catch (error) {
@@ -44,7 +45,7 @@ function Dashboard() {
     setShowAnswerForm(false);
     try {
       const response = await axios.get(
-        `http://localhost:3001/api/questions/${question.question_id}/answers`
+        `${backendUrl}/api/questions/${question.question_id}/answers`
       );
       setAnswers(response.data);
     } catch (error) {
@@ -55,7 +56,7 @@ function Dashboard() {
   const handleSubmitQuestion = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:3001/api/questions", {
+      await axios.post(`${backendUrl}/api/questions`, {
         categoryId: selectedCategory.category_id,
         userId: localStorage.getItem("userId"),
         ...newQuestion,
@@ -73,7 +74,7 @@ function Dashboard() {
     e.preventDefault();
     try {
       await axios.post(
-        `http://localhost:3001/api/questions/${selectedQuestion.question_id}/answers`,
+        `${backendUrl}/api/questions/${selectedQuestion.question_id}/answers`,
         {
           content: newAnswer,
           userId: localStorage.getItem("userId"),
