@@ -11,12 +11,14 @@ app.use(cors());
 
 async function connectToDatabase() {
   try {
-    const dbConfig = new URL(process.env.JAWSDB_URL);
+    const dbConfig = new URL(
+      "mysql://ghoiuvef0rmw4sn7:glzmnljlotak80x8@zj2x67aktl2o6q2n.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/yr63hdytf6cspl5o"
+    );
     const connection = await mysql.createConnection({
       host: dbConfig.hostname,
       user: dbConfig.username,
       password: dbConfig.password,
-      database: dbConfig.pathname.substr(1),
+      database: "yr63hdytf6cspl5o",
       ssl: {
         rejectUnauthorized: false, // This is often needed for Heroku's self-signed certificates
       },
