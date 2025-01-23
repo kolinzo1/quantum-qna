@@ -10,10 +10,10 @@ app.use(express.json());
 app.use(cors());
 
 const db = mysql.createPool({
-  host: "localhost",
-  user: "kolinzo",
-  password: "Thisaccess1#",
-  database: "quantum",
+  host: "zj2x67aktl2o6q2n.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+  user: "ghoiuvef0rmw4sn7",
+  password: "glzmnljlotak80x8",
+  database: "yr63hdytf6cspl5o",
 });
 
 // User Registration
