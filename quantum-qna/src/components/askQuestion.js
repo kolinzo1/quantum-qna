@@ -1,4 +1,4 @@
-const backendUrl = process.env.REACT_APP_BACKEND_URL || "http://localhost:3001";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 function AskQuestion({ categoryId, onQuestionSubmitted }) {
   const [formData, setFormData] = useState({

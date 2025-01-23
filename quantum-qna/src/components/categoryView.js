@@ -3,7 +3,7 @@ import axios from "axios";
 import QuestionList from "./questionList.js";
 import AskQuestion from "./askQuestion.js";
 
-const backendUrl = process.env.REACT_APP_BACKEND_URL || "http://localhost:3001";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 function CategoryView({ categoryId }) {
   const [questions, setQuestions] = useState([]);

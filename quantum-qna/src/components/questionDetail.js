@@ -3,8 +3,7 @@ function QuestionDetail({ questionId }) {
   const [answers, setAnswers] = useState([]);
   const [newAnswer, setNewAnswer] = useState("");
 
-  const backendUrl =
-    process.env.REACT_APP_BACKEND_URL || "http://localhost:3001";
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
   useEffect(() => {
     fetchQuestionAndAnswers();
   }, [questionId]);

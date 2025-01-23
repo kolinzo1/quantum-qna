@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const backendUrl = process.env.REACT_APP_BACKEND_URL || "http://localhost:3001";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 function Dashboard() {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);

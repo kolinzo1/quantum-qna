@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 
-const backendUrl = process.env.REACT_APP_BACKEND_URL || "http://localhost:3001";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 function Login() {
   const [formData, setFormData] = useState({
     username: "",
